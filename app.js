@@ -8,14 +8,14 @@ let upgrades = [
     },
     {
         name: 'tv show',
-        power: 15,
+        power: 20,
         timer: 0,
         count: 0,
         cost: 100
     },
     {
         name: 'cult leaders',
-        power: 20,
+        power: 10,
         timer: 3000,
         count: 0,
         cost: 500
@@ -32,7 +32,7 @@ let upgrades = [
 let totalFollowing = 0
 let followers = 0
 let clock = upgrades[2].timer
-let power = 0
+let power = 1
 
 drawStats()
 
@@ -61,6 +61,8 @@ function addOutreach(upgradeName) {
 
 function addCultLeader() {
     upgrades[2].count++
+    power += upgrades[2].power
+    upgrades[2].power += upgrades[2].power
     drawStats()
 }
 
@@ -82,6 +84,7 @@ function drawStats() {
     let clockElem = document.getElementById('clockCount');
     let followingElem = document.getElementById('totalFollowingCount');
     let followerElem = document.getElementById('followersCount');
+    let powerElem = document.getElementById('power');
     let bullhornBtnElem = document.getElementById('bullhornbtn');
     let tvshowBtnElem = document.getElementById('tvshowbtn');
     let cultleaderBtnElem = document.getElementById('cultleaderbtn');
@@ -90,6 +93,7 @@ function drawStats() {
     followerElem.innerHTML = `<span class="mdi mdi-account-multiple-plus"></span><span> ${followers}</span>`
     followingElem.innerHTML = `<span class="mdi mdi-account-group"></span><span> ${totalFollowing}</span>`
     clockElem.innerHTML = `<span class="mdi mdi-clock-plus-outline"></span><span> ${clock}</span>`
+    powerElem.innerHTML = `<span class="mdi mdi-account-plus"></span><span> ${power}</span>`
     bullhornBtnElem.innerHTML = `<span
     class="mdi mdi-bullhorn-variant"></span><span> ${upgrades[0].cost}</span>`
     tvshowBtnElem.innerHTML = `<span
@@ -104,6 +108,10 @@ function drawStats() {
     class="mdi mdi-television-classic"><span> ${upgrades[1].count}</span>`
     bullhornElem.innerHTML = `<span
     class="mdi mdi-bullhorn-variant"><span> ${upgrades[0].count}</span>`
+}
+
+function dragonBaby() {
+
 }
 
 function reset() {
