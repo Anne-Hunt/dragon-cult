@@ -32,23 +32,36 @@ let upgrades = [
 let totalFollowing = 0
 let followers = 0
 let clock = upgrades[2].timer
+let power = 0
 
 drawStats()
 
 function mineFollowers() {
-    followers++
+    if (power > 1) {
+        followers += power
+    } else {
+        followers++
+    }
     drawStats()
 }
 
 function addOutreach(upgradeName) {
     let improvement = upgrades.find(upgrade => upgrade.name == upgradeName)
-    improvement.cost
-    improvement.count
-    improvement.value
+    if (totalFollowing >= improvement.cost) {
+        totalFollowing -= improvement.cost
+        improvement.count++
+        improvement.value
+        power += improvement.power
+        improvement.cost = improvement.cost * 2
+    } else {
+        window.alert('You need more followers to sacrifice!')
+    }
+    drawStats()
 }
 
 function addCultLeader() {
-
+    upgrades[2].count++
+    drawStats()
 }
 
 setInterval(addCultLeader, upgrades[2].timer)
@@ -99,4 +112,5 @@ function reset() {
     for (let i = 0; i < upgrades.length; i++) {
         upgrades[i].count = 0
     }
+    drawStats()
 }
