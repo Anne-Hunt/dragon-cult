@@ -11,15 +11,94 @@
 </head>
 
 <body>
-    <header class="container-fluid">
-
+    <header class="container-fluid text-center text-light bg-dark opacity-75 p-3">
+        <section class="row bg-dark opacity-100">
+            <h1>Dragon Cult</h1>
+            <label for="h1">Recruit to Feed Our Dragon Overlords</label>
+        </section>
     </header>
     <main class="container-fluid">
+        <section class="row justify-content-center">
+            <div class="col-4 p-5 d-flex justify-content-center">
+                <div class="rounded-circle border border-5 border-dark shadow">
+                    <img src="https://images.unsplash.com/photo-1564590325500-35fd32a51fac?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bGFyZ2UlMjBncm91cCUyMG9mJTIwcGVvcGxlfGVufDB8fDB8fHww"
+                        alt="mine these mindless followers" class="rounded-circle" id="mine" onclick="mineFollowers()">
+                </div>
+            </div>
+        </section>
+        <section class="row justify-content-center">
+            <div id="followers" class="col-2 bg-warning rounded-top text-center text-light">
+                <h2 id="followersCount"></h2>
+            </div>
+            <div id="power" class="col-2 bg-warning rounded-top text-center text-light">
+                <h2 id="totalFollowingCount"></h2>
+            </div>
+            <div id="time" class="col-2 bg-warning rounded-top text-center text-light">
+                <h2 id="clockCount"></h2>
+            </div>
+        </section>
 
+
+        <section class="row bg-warning rounded-top p-2">
+            <div class="col-6 text-light text-center">
+                <h3>Upgrades</h3>
+            </div>
+            <div class="col-6 text-light text-center">
+                <h3>Stats</h3>
+            </div>
+        </section>
+
+
+        <section class="row bg-warning">
+            <div class="col-6">
+                <div class="row p-1">
+                    <div class="col-6 p-1">
+                        <button class="btn btn-success shadow text-light" onclick="addOutreach('bullhorn')"><span
+                                id="bullhornbtn"></span></button>
+                    </div>
+                    <div class="col-6 p-1">
+                        <button class="btn btn-success shadow text-light" onclick="addOutreach('tv show')"><span
+                                id="tvshowbtn"></span></button>
+                    </div>
+                </div>
+
+                <div class="row p-1">
+                    <div class="col-6 p-1">
+                        <button class="btn btn-success shadow text-light" onclick="addOutreach('cult leaders')"><span
+                                id="cultleaderbtn"></span></button>
+                    </div>
+                    <div class="col-6 p-1">
+                        <button class="btn btn-success shadow text-light" onclick="addOutreach('mlm')"><span
+                                id="mlmbtn"></span></button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-6 p-1">
+                <div class="row p-1">
+                    <div class="col-6 p-1">
+                        <span class="bg-success rounded shadow text-light" id="bullhorn">Bullhorn</span>
+                    </div>
+                    <div class="col-6 p-1">
+                        <span class="bg-success rounded shadow text-light" id="tvshow">TV Show</span>
+                    </div>
+                </div>
+                <div class="row p-2">
+                    <div class="col-6 p-1">
+                        <span class="bg-success rounded shadow text-light" id="cultLeader">Cult Leaders</span>
+                    </div>
+                    <div class="col-6 p-1">
+                        <span class="bg-success rounded shadow text-light" id="mlm">MLM</span>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
-    <footer class="container-fluid">
-
+    <footer class="container-fluid bg-dark text-center p-1">
+        <h5 class="text-light">Made by Anne Hunt</h5>
     </footer>
+    <script src="app.js"></script>
 </body>
 
 </html>
