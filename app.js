@@ -40,9 +40,9 @@ drawStats()
 
 function mineFollowers() {
     if (power > 1) {
-        followers += power
+        followers += .2
     } else {
-        followers++
+        followers += .1
     }
     drawStats()
     dragonBaby()
@@ -60,8 +60,8 @@ function addOutreach(upgradeName) {
         window.alert('You need more followers to sacrifice!')
     }
 
-    if (power > 100000) {
-        power = 100000
+    if (power >= 100000) {
+        power === 100000
     }
     drawStats()
 }
@@ -90,7 +90,10 @@ function drawStats() {
     let tvshowElem = document.getElementById('tvshow');
     let cultLeaderElem = document.getElementById('cultLeader');
     let mlmElem = document.getElementById('mlm');
-    let clockElem = document.getElementById('clockCount');
+    let bullhorndescElem = document.getElementById('bullhorndesc');
+    let tvshowdescElem = document.getElementById('tvshowdesc');
+    let cultdescElem = document.getElementById('cultdesc');
+    let mlmdescElem = document.getElementById('mlmdesc');
     let followingElem = document.getElementById('totalFollowingCount');
     let followerElem = document.getElementById('followersCount');
     let powerElem = document.getElementById('power');
@@ -103,8 +106,14 @@ function drawStats() {
 
     followerElem.innerHTML = `<span class="mdi mdi-account-multiple-plus"></span><span> ${followers}</span>`
     followingElem.innerHTML = `<span class="mdi mdi-account-group"></span><span> ${totalFollowing}</span>`
-    clockElem.innerHTML = `<span class="mdi mdi-clock-plus-outline"></span><span> ${clock}</span>`
     powerElem.innerHTML = `<span class="mdi mdi-account-plus"></span><span> ${power}</span>`
+    humanSacrificeElem.innerHTML = `<h4>Humans Sacrificed: ${humansSacrificed}</h4>`
+    dragonElem.innerHTML = `<h4>Dragons Fed: ${dragons}`
+
+    bullhorndescElem.innerHTML = `Bullhorn<span class="mdi mdi-arm-flex p-1"></span> ${upgrades[0].power}`
+    tvshowdescElem.innerHTML = `TV Show<span class="mdi mdi-arm-flex p-1"></span> ${Math.floor(upgrades[1].power)}`
+    cultdescElem.innerHTML = `Cult Leader<span class="mdi mdi-arm-flex p-1"></span> ${upgrades[2].power}`
+    mlmdescElem.innerHTML = `Own an MLM<span class="mdi mdi-arm-flex p-1"></span> ${upgrades[3].power}`
     bullhornBtnElem.innerHTML = `<span
     class="mdi mdi-bullhorn-variant"></span><span> ${upgrades[0].cost}</span>`
     tvshowBtnElem.innerHTML = `<span
@@ -112,15 +121,14 @@ function drawStats() {
     cultleaderBtnElem.innerHTML = `<span
     class="mdi mdi-human-handsup"></span><span> ${upgrades[2].cost}</span>`
     mlmbtnElem.innerHTML = `<span class="mdi mdi-pyramid"></span><span> ${upgrades[3].cost}</span>`
-    mlmElem.innerHTML = `<span class="mdi mdi-pyramid"><span> ${upgrades[3].count}</span>`
+
+    mlmElem.innerHTML = `<span class="mdi mdi-pyramid rounded border border-light shadow text-light p-1 px-2 stat-w text-center"></span><span class="p-1">Own An MLM</span><span class="mdi mdi-clock-plus-outline p-1"></span><span class="rounded border border-light shadow text-light p-1 px-2 stat-w text-center"> ${upgrades[3].count}</span>`
     cultLeaderElem.innerHTML = `<span
-    class="mdi mdi-human-handsup"><span> ${upgrades[2].count}</span>`
+    class="mdi mdi-human-handsup rounded border border-light shadow text-light p-1 px-2 stat-w text-center"></span><span class="p-1">Cult Leaders</span><span class="mdi mdi-clock-plus-outline p-1"></span><span class="rounded border border-light shadow text-light p-1 px-2 stat-w text-center"> ${upgrades[2].count}</span>`
     tvshowElem.innerHTML = `<span
-    class="mdi mdi-television-classic"><span> ${upgrades[1].count}</span>`
+    class="mdi mdi-television-classic rounded border border-light shadow text-light p-1 px-2 stat-w text-center"></span><span class="p-1">TV Show</span><span class="mdi mdi-cash-sync"></span><span class="rounded border border-light shadow text-light p-1 px-2 stat-w text-center"> ${upgrades[1].count}</span>`
     bullhornElem.innerHTML = `<span
-    class="mdi mdi-bullhorn-variant"><span> ${upgrades[0].count}</span>`
-    humanSacrificeElem.innerHTML = `<h4>Humans Sacrificed: ${humansSacrificed}</h4>`
-    dragonElem.innerHTML = `<h4>Dragons Fed: ${dragons}`
+    class="mdi mdi-bullhorn-variant rounded border border-light shadow text-light p-1 px-2 stat-w text-center"></span><span class="p-1">Bullhorn</span><span class="mdi mdi-cash-sync"></span><span class="rounded border border-light shadow text-light p-1 px-2 stat-w text-center"> ${upgrades[0].count}</span>`
 }
 
 function dragonBaby() {

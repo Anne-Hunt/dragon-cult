@@ -3,16 +3,26 @@ body {
     background: rgb(2, 0, 36);
     background: radial-gradient(circle at bottom left, #05aacb 0%, rgba(9, 9, 121, 1) 35%, rgba(2, 0, 36, 1) 100%);
     background-position: center;
+    font-family: "Orbitron", sans-serif;
 }
 
-marquee {
-    height: 50vh
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: "Orbitron", sans-serif;
+    font-weight: 600;
 }
 
 #mine {
     height: 250px;
     width: 250px;
     user-select: none;
+}
+
+.fsmall {
+    font-size: x-small;
 }
 
 .dragon {
@@ -33,6 +43,9 @@ marquee {
     animation: shadow-inset-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
+.stat-w {
+    width: 40px;
+}
 
 .hidden {
     display: none !important;
