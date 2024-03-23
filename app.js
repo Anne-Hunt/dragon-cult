@@ -1,7 +1,7 @@
 let upgrades = [
     {
         name: 'bullhorn',
-        power: 5,
+        power: 2,
         timer: 0,
         count: 0,
         cost: 10
@@ -11,11 +11,11 @@ let upgrades = [
         power: 20,
         timer: 0,
         count: 0,
-        cost: 100
+        cost: 1000
     },
     {
         name: 'cult leaders',
-        power: 10,
+        power: 3,
         timer: 3000,
         count: 0,
         cost: 500
@@ -25,7 +25,7 @@ let upgrades = [
         power: 100,
         timer: 300000,
         count: 0,
-        cost: 1000
+        cost: 100000
     }
 ]
 
@@ -33,6 +33,8 @@ let totalFollowing = 0
 let followers = 0
 let clock = upgrades[2].timer
 let power = 1
+let humansSacrificed = 0
+let dragons = 0
 
 drawStats()
 
@@ -43,6 +45,7 @@ function mineFollowers() {
         followers++
     }
     drawStats()
+    dragonBaby()
 }
 
 function addOutreach(upgradeName) {
@@ -52,9 +55,13 @@ function addOutreach(upgradeName) {
         improvement.count++
         improvement.value
         power += improvement.power
-        improvement.cost = improvement.cost * 2
+        improvement.cost = improvement.cost * 5
     } else {
         window.alert('You need more followers to sacrifice!')
+    }
+
+    if (power > 100000) {
+        power = 100000
     }
     drawStats()
 }
@@ -72,7 +79,9 @@ setInterval(moveFollowers, 5000)
 
 function moveFollowers() {
     totalFollowing += followers
+    humansSacrificed += followers
     followers = 0
+    power = 0
     drawStats()
 }
 
@@ -89,6 +98,8 @@ function drawStats() {
     let tvshowBtnElem = document.getElementById('tvshowbtn');
     let cultleaderBtnElem = document.getElementById('cultleaderbtn');
     let mlmbtnElem = document.getElementById('mlmbtn');
+    let humanSacrificeElem = document.getElementById('sacrifices')
+    let dragonElem = document.getElementById('totalDragons')
 
     followerElem.innerHTML = `<span class="mdi mdi-account-multiple-plus"></span><span> ${followers}</span>`
     followingElem.innerHTML = `<span class="mdi mdi-account-group"></span><span> ${totalFollowing}</span>`
@@ -108,15 +119,27 @@ function drawStats() {
     class="mdi mdi-television-classic"><span> ${upgrades[1].count}</span>`
     bullhornElem.innerHTML = `<span
     class="mdi mdi-bullhorn-variant"><span> ${upgrades[0].count}</span>`
+    humanSacrificeElem.innerHTML = `<h4>Humans Sacrificed: ${humansSacrificed}</h4>`
+    dragonElem.innerHTML = `<h4>Dragons Fed: ${dragons}`
 }
 
 function dragonBaby() {
-
+    let dragonBabyElem = document.getElementById('dragonBaby')
+    if (power >= 1000) {
+        dragonBabyElem.innerHTML += '<i class="fa-solid fa-dragon"></i>'
+        power -= 1000
+        humansSacrificed += 1000
+        dragons++
+    }
+    drawStats()
 }
 
 function reset() {
     totalFollowing = 0
     followers = 0
+    power = 0
+    humansSacrificed = 0
+    dragons = 0
     for (let i = 0; i < upgrades.length; i++) {
         upgrades[i].count = 0
     }
