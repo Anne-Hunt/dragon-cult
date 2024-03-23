@@ -44,40 +44,42 @@
         </section>
         <section class="row justify-content-start">
             <div id="followers" class="col-2 bg-secondary rounded-top text-center text-light shadowy">
-                <h2 id="followersCount"></h2>
+                <h2 id="followersCount"></h2><span class="text-center fsmall">New Followers</span>
             </div>
             <div id="group" class="col-2 bg-secondary rounded-top text-center text-light shadowy">
-                <h2 id="totalFollowingCount"></h2>
+                <h2 id="totalFollowingCount"></h2><span class="text-center fsmall">Total Followers</span>
             </div>
             <div id="time" class="col-2 bg-secondary rounded-top text-center text-light shadowy">
-                <h2 id="power"></h2>
+                <h2 id="power"></h2><span class="text-center fsmall">Multiplier</span>
             </div>
         </section>
+    </main>
 
 
-        <section class="row bg-secondary rounded-top-right p-2 shadowy">
+    <footer class="container-fluid text-center text-light p-1 shadowy">
+        <section class="row rounded-top-right p-2">
             <div class="col-6 text-light text-start p-2 rounded">
                 <h4 class="p-2">Upgrades</h4>
                 <div class="container-fluid justify-content-evenly align-items-center">
                     <div class="row">
                         <div class="col-6">
-                            <div class="p-1">
+                            <div class="p-2">
                                 <button class="btn btn-dark shadow text-light" onclick="addOutreach('bullhorn')"><span
                                         id="bullhornbtn"></span></button><span id="bullhorndesc"
                                     class="p-1 fsmall"></span>
                             </div>
-                            <div class="p-1">
+                            <div class="p-2">
                                 <button class="btn btn-dark shadow text-light" onclick="addOutreach('tv show')"><span
                                         id="tvshowbtn"></span></button><span id="tvshowdesc" class="p-1 fsmall"></span>
                             </div>
                         </div>
                         <div class="col-6">
-                            <div class="p-1">
+                            <div class="p-2">
                                 <button class="btn btn-dark shadow text-light"
                                     onclick="addOutreach('cult leaders')"><span id="cultleaderbtn"></span></button><span
                                     id="cultdesc" class="p-1 fsmall"></span>
                             </div>
-                            <div class="p-1">
+                            <div class="p-2">
                                 <button class="btn btn-dark shadow text-light" onclick="addOutreach('mlm')"><span
                                         id="mlmbtn"></span></button><span id="mlmdesc" class="p-1 fsmall"></span>
                             </div>
@@ -109,10 +111,6 @@
                 </div>
             </div>
         </section>
-
-
-    </main>
-    <footer class="container-fluid bg-dark text-center text-light p-1 shadowy">
         <span>
             <h5 class="text-light">Made by Anne Hunt</h5>
             <p id="clockCount" class="ts-5"></p>
