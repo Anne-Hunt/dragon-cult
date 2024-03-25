@@ -25,7 +25,7 @@ let upgrades = [
         power: 100,
         timer: 300000,
         count: 0,
-        cost: 100000
+        cost: 10000
     }
 ]
 
