@@ -35,7 +35,7 @@ let clock = upgrades[2].timer
 let power = 1
 let humansSacrificed = 0
 let dragons = 0
-let automatic = upgrades[3].power + upgrades[2].power
+let automatic = 0
 
 drawStats()
 
@@ -61,32 +61,29 @@ function addOutreach(upgradeName) {
     drawStats()
 }
 
-function addCultLeader() {
-    followers += upgrades[2].power
-    drawStats()
-}
-
-function addMLM() {
-    followers += upgrades[3].power
+function addAutomatic() {
+    followers += automatic
     drawStats()
 }
 
 function runIntervals(upgradeName) {
     if (upgradeName == 'cult leader') {
         upgrades[2].count++
+        automatic += 3
         let cultBtn = document.getElementById('oneCult')
         cultBtn.setAttribute("disabled", "")
         drawStats()
-        setInterval(addCultLeader, upgrades[2].timer)
     }
     if (upgradeName == 'add mlm') {
         upgrades[3].count++
+        automatic += 100
         let mlmBtn = document.getElementById('oneMLM')
         mlmBtn.setAttribute("disabled", "")
         drawStats()
-        setInterval(addMLM, 5000)
     }
 }
+
+setInterval(addAutomatic, 3000)
 
 function drawStats() {
     if (power >= 100000) {
@@ -133,17 +130,6 @@ function drawStats() {
     bullhornElem.innerHTML = `<span
     class="mdi mdi-bullhorn-variant rounded border border-light shadow text-light p-1 px-2 stat-w text-center"></span><span class="p-1">Bullhorn</span><span class="mdi mdi-cash-sync"></span><span class="rounded border border-light shadow text-light p-1 px-2 stat-w text-center"> ${upgrades[0].count}</span>`
 }
-
-/*function dragonBaby() {
-    let dragonBabyElem = document.getElementById('dragonBaby')
-    if (power >= 1000) {
-        dragonBabyElem.innerHTML += '<i class="fa-solid fa-dragon"></i>'
-        power -= 1000
-        humansSacrificed += 1000
-        dragons++
-    }
-    drawStats()
-}*/
 
 function reset() {
     totalFollowing = 0
