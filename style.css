@@ -1,7 +1,7 @@
 body {
     background-image: url("/stardust.png");
     background: rgb(2, 0, 36);
-    background: radial-gradient(circle at bottom left, #05aacb 0%, rgba(9, 9, 121, 1) 35%, rgba(2, 0, 36, 1) 100%);
+    background: radial-gradient(circle, #05aacb 0%, rgba(9, 9, 121, 1) 35%, rgba(2, 0, 36, 1) 100%);
     background-position: center;
     font-family: "Orbitron", sans-serif;
 }

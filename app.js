@@ -35,67 +35,61 @@ let clock = upgrades[2].timer
 let power = 1
 let humansSacrificed = 0
 let dragons = 0
+let automatic = upgrades[3].power + upgrades[2].power
 
 drawStats()
 
 function mineFollowers() {
-    if (power > 1) {
-        followers += 2
-    } else {
-        followers += 1
-    }
+    followers += 1 + power
     drawStats()
-    dragonBaby()
+    // dragonBaby()
 }
 
 function addOutreach(upgradeName) {
     let improvement = upgrades.find(upgrade => upgrade.name == upgradeName)
-    if (totalFollowing >= improvement.cost) {
-        totalFollowing -= improvement.cost
+    if (followers >= improvement.cost) {
+        followers -= improvement.cost
         improvement.count++
-        improvement.value
         power += improvement.power
-        improvement.cost = improvement.cost * 5
+        improvement.cost = improvement.cost * 2
     } else {
         window.alert('You need more followers to sacrifice!')
     }
-
     if (power >= 100000) {
         power = 100000
     }
-
-    if (upgrades[3].power >= 100000) {
-        power = 100000
-    }
-
     drawStats()
 }
 
 function addCultLeader() {
-    upgrades[2].count++
-    power += upgrades[2].power
-    upgrades[2].power += upgrades[2].power
+    followers += upgrades[2].power
     drawStats()
 }
 
-setInterval(addCultLeader, upgrades[2].timer)
-
-setInterval(moveFollowers, 5000)
-
-function moveFollowers() {
-    totalFollowing += followers
-    humansSacrificed += followers
-    followers = 0
-    power = 0
+function addMLM() {
+    followers += upgrades[3].power
     drawStats()
+}
+
+function runIntervals(upgradeName) {
+    if (upgradeName == 'cult leader') {
+        upgrades[2].count++
+        let cultBtn = document.getElementById('oneCult')
+        cultBtn.setAttribute("disabled", "")
+        drawStats()
+        setInterval(addCultLeader, upgrades[2].timer)
+    }
+    if (upgradeName == 'add mlm') {
+        upgrades[3].count++
+        let mlmBtn = document.getElementById('oneMLM')
+        mlmBtn.setAttribute("disabled", "")
+        drawStats()
+        setInterval(addMLM, 5000)
+    }
 }
 
 function drawStats() {
     if (power >= 100000) {
-        power = 100000
-    }
-
-    if (upgrades[3].power >= 100000) {
         power = 100000
     }
 
@@ -107,21 +101,17 @@ function drawStats() {
     let tvshowdescElem = document.getElementById('tvshowdesc');
     let cultdescElem = document.getElementById('cultdesc');
     let mlmdescElem = document.getElementById('mlmdesc');
-    let followingElem = document.getElementById('totalFollowingCount');
+    let automaticElem = document.getElementById('automatic');
     let followerElem = document.getElementById('followersCount');
     let powerElem = document.getElementById('power');
     let bullhornBtnElem = document.getElementById('bullhornbtn');
     let tvshowBtnElem = document.getElementById('tvshowbtn');
     let cultleaderBtnElem = document.getElementById('cultleaderbtn');
     let mlmbtnElem = document.getElementById('mlmbtn');
-    let humanSacrificeElem = document.getElementById('sacrifices')
-    let dragonElem = document.getElementById('totalDragons')
 
-    followerElem.innerHTML = `<span class="mdi mdi-account-multiple-plus"></span><span> ${Math.floor(followers)}</span>`
-    followingElem.innerHTML = `<span class="mdi mdi-account-group"></span><span> ${Math.floor(totalFollowing)}</span>`
-    powerElem.innerHTML = `<span class="mdi mdi-account-plus"></span><span> ${Math.floor(power)}</span>`
-    humanSacrificeElem.innerHTML = `<h4>Humans Sacrificed: ${Math.floor(humansSacrificed)}</h4>`
-    dragonElem.innerHTML = `<h4>Dragons Fed: ${dragons}`
+    followerElem.innerHTML = `<span class="mdi mdi-account-multiple-plus"></span><span> ${followers}</span>`
+    automaticElem.innerHTML = `<span class="mdi mdi-account-group"></span><span> ${automatic}</span>`
+    powerElem.innerHTML = `<span class="mdi mdi-account-plus"></span><span> ${power}</span>`
 
     bullhorndescElem.innerHTML = `Bullhorn<span class="mdi mdi-arm-flex p-1"></span> ${upgrades[0].power}`
     tvshowdescElem.innerHTML = `TV Show<span class="mdi mdi-arm-flex p-1"></span> ${upgrades[1].power}`
@@ -144,7 +134,7 @@ function drawStats() {
     class="mdi mdi-bullhorn-variant rounded border border-light shadow text-light p-1 px-2 stat-w text-center"></span><span class="p-1">Bullhorn</span><span class="mdi mdi-cash-sync"></span><span class="rounded border border-light shadow text-light p-1 px-2 stat-w text-center"> ${upgrades[0].count}</span>`
 }
 
-function dragonBaby() {
+/*function dragonBaby() {
     let dragonBabyElem = document.getElementById('dragonBaby')
     if (power >= 1000) {
         dragonBabyElem.innerHTML += '<i class="fa-solid fa-dragon"></i>'
@@ -153,7 +143,7 @@ function dragonBaby() {
         dragons++
     }
     drawStats()
-}
+}*/
 
 function reset() {
     totalFollowing = 0

@@ -24,33 +24,33 @@
                 <h1>Dragon Cult</h1>
                 <label for="h1">Recruit to Feed Our Dragon Overlords</label>
             </div>
-            <div class="col-4">
-                <span id="sacrifices"></span>
-                <span id="totalDragons"></span>
-            </div>
         </section>
     </header>
+
+
     <main class="container-fluid">
-        <section class="row">
-            <div class="col-4 p-5 d-flex justify-content-center align-items-center bg-transparent">
+        <section class="row justify-content-center align-items-center ">
+            <div class="col-4 p-5 d-flex bg-transparent">
                 <div class="rounded-circle border border-5 border-dark shadow">
                     <img src="https://images.unsplash.com/photo-1564590325500-35fd32a51fac?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bGFyZ2UlMjBncm91cCUyMG9mJTIwcGVvcGxlfGVufDB8fDB8fHww"
                         alt="mine these mindless followers" class="rounded-circle" id="mine" onclick="mineFollowers()">
                 </div>
             </div>
-            <div class="col-8 d-flex justify-content-end align-content-end flex-wrap px-0">
-                <span id="dragonBaby" class="p-1 dragon"><i class="fa-solid fa-dragon"></i></span>
-            </div>
         </section>
-        <section class="row justify-content-start">
+
+
+        <section class="row justify-content-center">
             <div id="followers" class="col-2 bg-secondary rounded-top text-center text-light shadowy">
-                <h2 id="followersCount"></h2><span class="text-center fsmall">New Followers</span>
+                <h2 id="automatic"></h2>
+                <p class="text-center fsmall">Automatic</p>
             </div>
-            <div id="group" class="col-2 bg-secondary rounded-top text-center text-light shadowy">
-                <h2 id="totalFollowingCount"></h2><span class="text-center fsmall">Total Followers</span>
+            <div id="group" class="col-3 bg-secondary rounded-top text-center text-light shadowy">
+                <h2 id="followersCount"></h2>
+                <p class="text-center fsmall">Total Followers</p>
             </div>
             <div id="time" class="col-2 bg-secondary rounded-top text-center text-light shadowy">
-                <h2 id="power"></h2><span class="text-center fsmall">Multiplier</span>
+                <h2 id="power"></h2>
+                <p class="text-center fsmall">Per Click</p>
             </div>
         </section>
     </main>
@@ -75,13 +75,14 @@
                         </div>
                         <div class="col-6">
                             <div class="p-2">
-                                <button class="btn btn-dark shadow text-light"
-                                    onclick="addOutreach('cult leaders')"><span id="cultleaderbtn"></span></button><span
+                                <button class="btn btn-dark shadow text-light" id="oneCult"
+                                    onclick="runIntervals('cult leader')"><span id="cultleaderbtn"></span></button><span
                                     id="cultdesc" class="p-1 fsmall"></span>
                             </div>
                             <div class="p-2">
-                                <button class="btn btn-dark shadow text-light" onclick="addOutreach('mlm')"><span
-                                        id="mlmbtn"></span></button><span id="mlmdesc" class="p-1 fsmall"></span>
+                                <button class="btn btn-dark shadow text-light" id="oneMLM"
+                                    onclick="runIntervals('add mlm')"><span id="mlmbtn"></span></button><span
+                                    id="mlmdesc" class="p-1 fsmall"></span>
                             </div>
                         </div>
                     </div>
