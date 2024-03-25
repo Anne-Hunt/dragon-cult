@@ -8,14 +8,14 @@ let upgrades = [
     },
     {
         name: 'tv show',
-        power: 5,
+        power: 40,
         timer: 0,
         count: 0,
         cost: 1000
     },
     {
         name: 'cult leaders',
-        power: 3,
+        power: 20,
         timer: 3000,
         count: 0,
         cost: 500
@@ -66,22 +66,28 @@ function addAutomatic() {
     drawStats()
 }
 
-function runIntervals(upgradeName) {
-    if (upgradeName == 'cult leader') {
+function runCult() {
+    if (followers >= upgrades[2].cost) {
         upgrades[2].count++
-        automatic += 3
+        automatic += upgrades[2].power
+        followers -= upgrades[2].cost
         let cultBtn = document.getElementById('oneCult')
         cultBtn.setAttribute("disabled", "")
         drawStats()
     }
-    if (upgradeName == 'add mlm') {
+}
+
+function runMLM() {
+    if (followers >= upgrades[3].cost) {
         upgrades[3].count++
-        automatic += 100
+        automatic += upgrades[3].power
+        followers -= upgrades[3].cost
         let mlmBtn = document.getElementById('oneMLM')
         mlmBtn.setAttribute("disabled", "")
         drawStats()
     }
 }
+
 
 setInterval(addAutomatic, 3000)
 
